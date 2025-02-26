@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign-Up</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #4a90e2, #a1c4fd);
+            position: relative;
+        }
+
+        /* Background animation */
+        .floating-icons {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .icon {
+            position: absolute;
+            width: 50px;
+            opacity: 0.2;
+            animation: float 12s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); opacity: 0.2; }
+            50% { opacity: 0.5; }
+            100% { transform: translateY(-100vh); opacity: 0; }
+        }
+
+        #signup-container {
+            position: relative;
+            z-index: 2;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 12px;
+            backdrop-filter: blur(15px);
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input[type="file"] {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: #6a11cb;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #5a0fa6;
+        }
+
+        p {
+            color: white;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+
+        a {
+            color: #ffd700;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating medical icons -->
+    <div class="floating-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831236.png" class="icon" style="left: 10%; animation-duration: 14s;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831239.png" class="icon" style="left: 40%; animation-duration: 16s;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831250.png" class="icon" style="left: 70%; animation-duration: 18s;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831272.png" class="icon" style="left: 90%; animation-duration: 20s;" loading="lazy">
+    </div>
+
+    <div id="signup-container">
+        <h2>DOCTOR SIGNUP</h2>
+        <form id="signup-form" action="connect.php" method="post">
+            <button type="submit"><a href="https://forms.gle/SSXHAZYhW1EFB1Jz6">SIGNUP</a></button>
+        </form>
+        <p>Already signed up? <a href="doctor_login.html">Login</a></p>
+    </div>
+</body>
+</html>
