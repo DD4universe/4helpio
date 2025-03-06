@@ -73,6 +73,7 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link" href="#contactForm">Doctor Secure Contact</a>
+                    <a class="nav-link" href="medicineordering.html">  Need medicine</a>
                     <a class="nav-link" href="#feedbackForm">Feedback</a>
                     <a class="nav-link" href="doctor_Signup.html">Doctor Login/Signup</a>
                     <a class="nav-link" href="medicalsignup.html">Clinic Login/Signup</a>
@@ -145,6 +146,9 @@
                     <option value="physiotherapy">Physiotherapy & Rehabilitation(உடலியல் மருத்துவம் மற்றும் மறுவாழ்வு சிகிச்சை)</option>
                     <option value="psychiatry">Psychiatry (Mental Health-மன நலம்)</option>
                     <option value="radiology">Radiology(கதிரியக்க மருத்துவம்)</option>
+                    <option value="oncology">Oncology (Cancer Treatment-புற்றுநோய் சிகிச்சை)</option>
+                    <option value="urology">Urology(மூத்திர மருத்துவம்)</option>
+                    <option value="nephrology">Nephrology (Kidney Care-சிறுநீய�துவம்)</option>
                     <option value="oncology">Oncology (Cancer Treatment-புற்றுநோய் சிகிச்சை)</option>
                     <option value="urology">Urology(மூத்திர மருத்துவம்)</option>
                     <option value="nephrology">Nephrology (Kidney Care-சிறுநீரக பராமரிப்பு)</option>
@@ -4042,7 +4046,8 @@
 
         <!-- Secure Contact Form -->
         <h4 class="mt-4">📩 Contact a Doctor (Private & Secure)</h4>
-        <form id="contactForm" action="connect.php" method="post">
+        <script src="contact.js"></script>
+        <form id="contactForm" >
             <div class="mb-3">
                 <label for="userName" class="form-label">Your Name</label>
                 <input type="text" class="form-control" id="userName" required aria-required="true">
