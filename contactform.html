@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Contact Form</title>
+    <link rel="stylesheet" href="contactform.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="floating-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831236.png" class="icon" style="left: 10%;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831239.png" class="icon" style="left: 40%;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831250.png" class="icon" style="left: 70%;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831272.png" class="icon" style="left: 90%;" loading="lazy">
+    </div>
+
+    <div class="form-container">
+        <h4 class="form-title">📩 Contact a Doctor (Private & Secure)</h4>
+        <form id="contactForm">
+            <div class="input-group">
+                <label for="userName" class="form-label">Your Name</label>
+                <input type="text" class="form-control" id="userName" required aria-required="true">
+            </div>
+            <div class="input-group">
+                <label for="userPhone" class="form-label">Your Mobile Number</label>
+                <input type="tel" class="form-control" id="userPhone" required aria-required="true" pattern="^\d{10}$" placeholder="Enter 10-digit mobile number">
+            </div>
+            <div class="input-group">
+                <label for="userMessage" class="form-label">Message</label>
+                <textarea class="form-control" id="userMessage" rows="3" required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send Inquiry</button>
+        </form>
+    </div>
+
+    <script src="contactform.js"></script>
+</body>
+</html>
