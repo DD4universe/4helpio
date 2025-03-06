@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Sign-Up</title>
+    <link rel="stylesheet" href="doctorsignup.css">
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="floating-icons">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831236.png" class="icon" style="left: 10%;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831239.png" class="icon" style="left: 40%;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831250.png" class="icon" style="left: 70%;" loading="lazy">
+        <img src="https://cdn-icons-png.flaticon.com/512/2831/2831272.png" class="icon" style="left: 90%;" loading="lazy">
+    </div>
+
+    <div class="container">
+        <button class="back-btn"><a href="HELPIO.html">Back</a></button>
+        <h2>Doctor Signup</h2>
+
+        <form id="doctorForm">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="text" id="specialization" placeholder="Specialization" required>
+            <input type="text" id="clinicName" placeholder="Clinic/Hospital Name" required>
+            <input type="text" id="clinicAddress" placeholder="Clinic/Hospital Address" required>
+            <input type="tel" id="phoneNumber" placeholder="Phone Number" required>
+            <input type="password" id="password" placeholder="Create Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+
+        <p>Already signed up? <a href="doctor_login.html">Login</a></p>
+    </div>
+
+    <script src="doctorsignup.js"></script>
+</body>
+</html>

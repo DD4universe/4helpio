@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>மருந்து தகவல் | Medicine Info</title>
+    <style>
+        /* Background Animation */
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fbc2eb);
+            background-size: 300% 300%;
+            animation: gradientAnimation 8s ease infinite;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            transition: background 0.5s, color 0.5s;
+        }
+
+        .dark-mode {
+            background: #222;
+            color: white;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 50%;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+        }
+
+        .dark-mode .container {
+            background: #333;
+            color: white;
+        }
+
+        h1 {
+            color: #333;
+            text-align: left;
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 16px;
+            color: #444;
+        }
+
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .add-btn {
+            background-color: #007bff;
+        }
+
+        .add-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .voice-search {
+            background-color: #f39c12;
+            margin-left: 10px;
+        }
+
+        .voice-search:hover {
+            background-color: #d68910;
+        }
+    </style>
+</head>
+<body>
+    <button class="dark-mode-btn" onclick="toggleDarkMode()">Dark Mode</button>
+
+    <div class="container">
+        <h1>Welcome! | வரவேற்கிறோம்!</h1>
+        <div id="medicineContainer">
+            <div class="medicine-block">
+                <label>Medicine Name | மருந்தின் பெயர்:</label>
+                <input type="text" class="medicine-input" placeholder="Search Medicine... | மருந்து தேடு...">
+                <button class="voice-search" onclick="startVoiceSearch(this)">🎙 Voice Search</button>
+                <button onclick="showDetails(this)">Search | தேடுக</button>
+            </div>
+        </div>
+
+        <button class="add-btn" onclick="addMedicineInput()">Add More Tablets | மேலும் மருந்துகள் சேர்க்க</button>
+    </div>
+
+    <script>
+         const medicines = {
+            "Paracetamol | பாராசிடமால்": {
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Paracetamol-skeletal.svg/200px-Paracetamol-skeletal.svg.png",
+                advantages: "Reduces fever and pain | காய்ச்சல் மற்றும் வலியை குறைக்கிறது",
+                disadvantages: "Liver damage in high doses | அதிக அளவில் பயனுபடுத்தினால் கல்லீரல் சேதம்",
+                warning: "Not for children under 6 years | 6 வயதிற்கும் குறைந்த குழந்தைகளுக்கு பொருந்தாது"
+            },
+            "Ibuprofen | இபூபுரோபன்": {
+                image: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Ibuprofen.svg/200px-Ibuprofen.svg.png",
+                advantages: "Reduces pain and inflammation | வலி மற்றும் அழற்சியைக் குறைக்கிறது",
+                disadvantages: "May cause stomach issues | வயிற்று பிரச்சினைகள் ஏற்படுத்தலாம்",
+                warning: "Avoid in kidney disease and children under 12 | சிறுநீரக நோயாளிகளுக்கும் 12 வயதிற்குட்பட்டவர்களுக்கும் தவிர்க்கவும்"
+            }
+        };
+        function showDetails(buttonElement) {
+            let inputElement = buttonElement.previousElementSibling.previousElementSibling;
+            let medicineName = inputElement.value;
+
+            if (!medicineName) {
+                alert("Please enter a valid medicine name.");
+                return;
+            }
+
+            let parentDiv = buttonElement.parentElement;
+
+            let medicineCard = document.createElement("div");
+            medicineCard.classList.add("medicine-card");
+            medicineCard.innerHTML = `
+                <h2>${medicineName}</h2>
+                <p>Details about ${medicineName}...</p>
+            `;
+
+            parentDiv.appendChild(medicineCard);
+        }
+
+        function addMedicineInput() {
+            let medicineContainer = document.getElementById("medicineContainer");
+
+            let newMedicineBlock = document.createElement("div");
+            newMedicineBlock.classList.add("medicine-block");
+            newMedicineBlock.innerHTML = `
+                <label>Medicine Name | மருந்தின் பெயர்:</label>
+                <input type="text" class="medicine-input" placeholder="Search Medicine... | மருந்து தேடு...">
+                <button class="voice-search" onclick="startVoiceSearch(this)">🎙 Voice Search</button>
+                <button onclick="showDetails(this)">Search | தேடுக</button>
+            `;
+
+            medicineContainer.appendChild(newMedicineBlock);
+        }
+
+        function startVoiceSearch(buttonElement) {
+            let inputElement = buttonElement.previousElementSibling;
+
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Voice search is not supported in your browser. Please use Google Chrome.");
+                return;
+            }
+
+            let recognition = new webkitSpeechRecognition();
+            recognition.lang = "ta-IN"; // Tamil Language
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                inputElement.value = event.results[0][0].transcript;
+            };
+
+            recognition.onerror = function(event) {
+                alert("Error occurred during voice search. Please try again.");
+            };
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Search</title>
+    <link rel="stylesheet" href="medicinesearch.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Search for Medicine</h2>
+        <form id="searchForm">
+            <label for="medicine">Medicine Name:</label>
+            <input type="text" id="medicine" required>
+            
+            <label for="location">Choose Location:</label>
+            <select id="location">
+                <option value="all">All Locations</option>
+                <option value="city1">City 1</option>
+                <option value="city2">City 2</option>
+            </select>
+            
+            <button type="submit">Search</button>
+        </form>
+
+        <div id="searchResults"></div>
+
+        <div id="requestMedicineSection">
+            <h3>Medicine Not Found? Request It Below:</h3>
+            <form id="requestForm">
+                <label for="requestMedicine">Medicine Name:</label>
+                <input type="text" id="requestMedicine" required>
+                <button type="submit">Request Medicine</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="medicinesearch.js"></script>
+</body>
+</html>

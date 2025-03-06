@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic/Medical Shop Medicine Entry</title>
+    <link rel="stylesheet" href="medicinesaddingpage.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Clinic/Medical Shop Medicine Entry</h2>
+
+        <form id="medicineForm">
+            <label for="name">Enter Your Name:</label>
+            <input type="text" id="name" required>
+
+            <label for="clinicName">Medical/Clinic Name:</label>
+            <input type="text" id="clinicName" required>
+
+            <label for="clinicAddress">Medical/Clinic Address:</label>
+            <input type="text" id="clinicAddress" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" required>
+
+            <div id="medicineContainer">
+                <div class="medicine-entry">
+                    <label for="medicineName">Medicine Name:</label>
+                    <input type="text" class="medicineName" required>
+
+                    <label for="count">Count:</label>
+                    <input type="number" class="medicineCount" required>
+
+                    <button type="button" class="removeMedicine">Remove</button>
+                </div>
+            </div>
+
+            <button type="button" id="addMedicine">Add More Medicine</button>
+            <button type="submit">Submit</button>
+        </form>
+
+        <h3>Available Medicines?</h3>
+        <div id="availableMedicines"></div>
+        <div id="neededMedicines">
+            <h3>Needed Medicines</h3>
+            <ul id="neededMedicineList"></ul>
+        </div>    
+    </div>
+    
+    <script src="medicinesaddingpage.js"></script>
+</body>
+</html>

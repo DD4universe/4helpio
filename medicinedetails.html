@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>மருந்து தேடல் / Medicine Search</title>
+    <link rel="stylesheet" href="medicinedetails.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="title">மருந்து தேடல் / Medicine Search</h2>
+        
+        <input type="text" id="searchInput" placeholder="மருந்தின் பெயரை உள்ளிடவும் / Enter medicine name" oninput="showSuggestions()">
+        <div id="suggestions" class="suggestions"></div>
+
+        <input type="text" id="problemInput" placeholder="உங்கள் பிரச்சனை (விரும்பினால்) / Enter your problem (optional)">
+        
+        <button id="searchBtn" onclick="searchMedicine()">தேடுக / Search</button>
+        <button id="langBtn" onclick="toggleLanguage()">மொழியை மாற்றவும் / Change Language</button>
+
+        <div class="loading" id="loadingSpinner">🔍 Searching...</div>
+
+        <div id="output" class="output"></div>
+    </div>
+
+    <script src="medicinedetails.js"></script>
+</body>
+</html>
