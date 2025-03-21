@@ -8,18 +8,19 @@ body {
     color: #1565C0;
     font-weight: bold;
 }
-.navbar-custom {
-            background-color: #18b437b4; /* Light Blue */
-        }
 
-        
+.navbar-custom {
+    background-color: #18b437b4; /* Light Blue */
+}
+
 .navbar-custom .navbar-nav .nav-link {
-            color: #1d131a !important;
-        }
+    color: #1d131a !important;
+}
 
 .navbar-custom .navbar-toggler-icon {
-            background-color: #18b437b4; /* Makes the burger icon white */
-        }
+    background-color: #18b437b4; /* Makes the burger icon white */
+}
+
 .card {
     margin-top: 3%;
     background-color: white;
