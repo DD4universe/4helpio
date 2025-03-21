@@ -1,3 +1,35 @@
+function submitFeedback(event) {
+    event.preventDefault();
+
+    // Get user input values
+    const name = document.getElementById("feedbackName").value.trim();
+    const feedback = document.getElementById("feedbackMessage").value.trim();
+
+    if (!name || !feedback) {
+        alert("Please fill in all fields.");
+        return;
+    }
+
+    
+    const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSfmmeNHGNupcStCeRB_vGSong4V_nL9EES5xwBRQTyJCW9RLw/formResponse";
+
+    // Prepare form data
+    const formData = new FormData();
+    formData.append("entry.846301261", name);
+    formData.append("entry.90450812", feedback);
+
+    // Submit the form using Fetch API
+    fetch(googleFormURL, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    }).then(() => {
+        alert("Feedback submitted successfully!");
+        document.getElementById("feedbackForm").reset();
+    }).catch(error => {
+        alert("Error submitting feedback. Please try again.");
+    });
+}
 document.addEventListener('contextmenu', (e) => e.preventDefault());
      document.addEventListener('keydown', (e) => {
        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')|| (e.ctrlKey && e.key==='U')) {
