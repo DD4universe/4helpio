@@ -10,15 +10,15 @@ body {
 }
 
 .navbar-custom {
-    background-color: #18b437b4; /* Light Blue */
+    background-color: #00796B; /* Calming Teal */
 }
 
 .navbar-custom .navbar-nav .nav-link {
-    color: #1d131a !important;
+    color: #FFFFFF !important;
 }
 
 .navbar-custom .navbar-toggler-icon {
-    background-color: #18b437b4; /* Makes the burger icon white */
+    background-color: #FFFFFF; /* Makes the burger icon white */
 }
 
 .card {
