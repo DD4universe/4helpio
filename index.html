@@ -24,13 +24,12 @@
                 <img src="logo.png" alt="Logo" width="60px" height="45px" class="d-inline-block align-text-top">
             </a>
 
-            <!-- ✅ Correct Toggle Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" 
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <!-- ✅ Navbar Links -->
+        
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">
                     <a class="nav-link" href="contactform.html">Doctor Secure Contact</a>
@@ -80,6 +79,7 @@
                     <option value="general">General Physician(பொதுநல மருத்துவர்)</option>
                     <option value="gynecologist">Gynecologist(மகப்பேறு மருத்துவர் - பெண்களுக்கே வரும் நோய்க்கு மருத்துவம் பார்க்கும் மருத்துவர்)                        )                    </option>
                     <option value="pediatrics">Pediatrics(குழந்தை மருத்துவம்)</option>
+                    <option value="nursing-home">Nursing Home(மருத்துவ பராமரிப்பு மையம்)</option>
                     <option value="ophthalmology">Ophthalmology (Eye Care-கண் மருத்துவம்)</option>
                     <option value="dermatology">Dermatology (Skin Care-தோல் மருத்துவம்)</option>
                     <option value="orthopedics">Orthopedics (Bone & Joint Care-எலும்பு மற்றும் மூட்டுச் சிகிச்சை)</option>
@@ -92,7 +92,7 @@
                     <option value="radiology">Radiology(கதிரியக்க மருத்துவம்)</option>
                     <option value="oncology">Oncology (Cancer Treatment-புற்றுநோய் சிகிச்சை)</option>
                     <option value="urology">Urology(மூத்திர மருத்துவம்)</option>
-                    <option value="nephrology">Nephrology (Kidney Care-சிறுநீய�துவம்)</option>
+                    <option value="nephrology">Nephrology (Kidney Care-சிறுநீயதுவம்)</option>
                     <option value="oncology">Oncology (Cancer Treatment-புற்றுநோய் சிகிச்சை)</option>
                     <option value="urology">Urology(மூத்திர மருத்துவம்)</option>
                     <option value="nephrology">Nephrology (Kidney Care-சிறுநீரக பராமரிப்பு)</option>
@@ -5159,40 +5159,7 @@
     <button type="submit" class="btn btn-success mb-2">Submit Feedback</button>
 </form>
 
-<script>
-function submitFeedback(event) {
-    event.preventDefault();
 
-    // Get user input values
-    const name = document.getElementById("feedbackName").value.trim();
-    const feedback = document.getElementById("feedbackMessage").value.trim();
-
-    if (!name || !feedback) {
-        alert("Please fill in all fields.");
-        return;
-    }
-
-    
-    const googleFormURL = "https://docs.google.com/forms/d/e/1FAIpQLSfmmeNHGNupcStCeRB_vGSong4V_nL9EES5xwBRQTyJCW9RLw/formResponse";
-
-    // Prepare form data
-    const formData = new FormData();
-    formData.append("entry.846301261", name);
-    formData.append("entry.90450812", feedback);
-
-    // Submit the form using Fetch API
-    fetch(googleFormURL, {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"
-    }).then(() => {
-        alert("Feedback submitted successfully!");
-        document.getElementById("feedbackForm").reset();
-    }).catch(error => {
-        alert("Error submitting feedback. Please try again.");
-    });
-}
-</script>
 
         
         <section id="about" style="background: linear-gradient(135deg, #3a7bd5, #00d2ff); color: white; padding: 50px; text-align: center; border-radius: 10px;">
