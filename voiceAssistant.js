@@ -2,7 +2,7 @@
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-recognition.lang = "ta-IN"; // Default to Tamil
+recognition.lang = "ta-IN"; // Default Language: Tamil
 recognition.continuous = true;
 recognition.interimResults = false;
 
@@ -16,8 +16,16 @@ const speak = (message, callback = null) => {
 
     speech.onend = () => {
         if (callback) callback();
-        else recognition.start(); // Restart recognition
+        else recognition.start(); // Restart recognition after speaking
     };
+};
+
+// Auto-start assistant when the page loads
+window.onload = () => {
+    setTimeout(() => {
+        isAssistantActive = true;
+        speak("Hello! Welcome to our website. Please choose a language: English or Tamil.");
+    }, 2000); // Small delay to ensure the page loads properly
 };
 
 // Wake Word Detection - Always Listening for "Hey Doctor"
@@ -32,7 +40,7 @@ wakeWordRecognition.onresult = (event) => {
 
     if (userSpeech.includes("hey doctor")) {
         isAssistantActive = true;
-        speak("How can I assist you?", () => recognition.start());
+        speak("Yes, I am here! How can I help you?", () => recognition.start());
     }
 };
 
@@ -45,7 +53,7 @@ recognition.onresult = (event) => {
     const userSpeech = event.results[event.results.length - 1][0].transcript.toLowerCase();
     console.log("User Command:", userSpeech);
 
-    // Language Change
+    // Language Selection
     if (userSpeech.includes("english")) {
         recognition.lang = "en-IN";
         speak("Language set to English.");
@@ -54,7 +62,7 @@ recognition.onresult = (event) => {
         speak("மொழி தமிழ் ஆக அமைக்கப்பட்டது.");
     }
     
-    // Page Navigation Commands
+    // Navigation Commands
     else if (userSpeech.includes("go to doctor signup")) {
         speak("Redirecting to Doctor Signup Page.", () => {
             window.location.href = "/doctor-signup.html";
