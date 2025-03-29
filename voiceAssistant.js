@@ -1,30 +1,31 @@
-// Step 1: Basic Voice Assistant Setup
+// Step 2: Auto-Start Voice Assistant with Proper Timing
 
-// Check if browser supports Speech Recognition
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-recognition.lang = 'ta-IN'; // Default Tamil, can switch to English dynamically
+recognition.lang = 'ta-IN'; // Default language: Tamil
 recognition.continuous = true;
 recognition.interimResults = false;
 
-// Text-to-Speech Setup
-const speak = (message) => {
+const speak = (message, callback) => {
     const speech = new SpeechSynthesisUtterance(message);
-    speech.lang = 'ta-IN'; // Default Tamil
+    speech.lang = recognition.lang;
+    speech.onend = callback || function() {}; // Wait for speech to end before next action
     window.speechSynthesis.speak(speech);
 };
 
-// Start Recognition Automatically on Website Load
-window.onload = () => {
-    speak("வணக்கம்! மொழியைத் தேர்வுசெய்க. Hello! Please select your language.");
-    recognition.start();
-};
+// Ensure voice starts **AFTER user interaction** (needed for Chrome security)
+document.addEventListener("click", function startAssistant() {
+    document.removeEventListener("click", startAssistant); // Remove event after first click
 
-// Process User Commands
+    speak("Welcome! Please select your language. Say 'English' or 'தமிழ்'.", () => {
+        recognition.start(); // Start listening only after greeting
+    });
+});
+
 recognition.onresult = (event) => {
     const userSpeech = event.results[event.results.length - 1][0].transcript.toLowerCase();
-    console.log("User said:", userSpeech);
-    
+    console.log("User Command:", userSpeech);
+
     if (userSpeech.includes("english")) {
         recognition.lang = 'en-IN';
         speak("Language set to English.");
@@ -37,7 +38,6 @@ recognition.onresult = (event) => {
     }
 };
 
-// Handle Errors
 recognition.onerror = (event) => {
     console.error("Speech recognition error:", event.error);
 };
