@@ -1,36 +1,43 @@
-// Step 2: Auto-Start Voice Assistant with Proper Timing
-
+// Ensure compatibility
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
-recognition.lang = 'ta-IN'; // Default language: Tamil
+recognition.lang = "ta-IN"; // Default: Tamil
 recognition.continuous = true;
 recognition.interimResults = false;
 
+// Function to speak text
 const speak = (message, callback) => {
     const speech = new SpeechSynthesisUtterance(message);
     speech.lang = recognition.lang;
-    speech.onend = callback || function() {}; // Wait for speech to end before next action
+    speech.onend = callback || function () {}; // Ensure next action starts after speaking
     window.speechSynthesis.speak(speech);
 };
 
-// Ensure voice starts **AFTER user interaction** (needed for Chrome security)
-document.addEventListener("click", function startAssistant() {
-    document.removeEventListener("click", startAssistant); // Remove event after first click
-
+// Function to start the assistant
+const startAssistant = () => {
+    console.log("Starting Voice Assistant...");
+    
     speak("Welcome! Please select your language. Say 'English' or 'தமிழ்'.", () => {
-        recognition.start(); // Start listening only after greeting
+        recognition.start(); // Start listening **only after** speaking
     });
+};
+
+// Ensure the bot starts automatically **after user interaction** (fix for Chrome security)
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Voice Assistant is ready!");
+    setTimeout(startAssistant, 2000); // Delay to ensure proper loading
 });
 
+// Handle voice commands
 recognition.onresult = (event) => {
     const userSpeech = event.results[event.results.length - 1][0].transcript.toLowerCase();
     console.log("User Command:", userSpeech);
 
     if (userSpeech.includes("english")) {
-        recognition.lang = 'en-IN';
+        recognition.lang = "en-IN";
         speak("Language set to English.");
     } else if (userSpeech.includes("தமிழ்")) {
-        recognition.lang = 'ta-IN';
+        recognition.lang = "ta-IN";
         speak("மொழி தமிழ் ஆக அமைக்கப்பட்டது.");
     } else if (userSpeech.includes("go to doctor signup")) {
         speak("Redirecting to Doctor Signup Page.");
@@ -38,6 +45,7 @@ recognition.onresult = (event) => {
     }
 };
 
+// Handle errors
 recognition.onerror = (event) => {
     console.error("Speech recognition error:", event.error);
 };
