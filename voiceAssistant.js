@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Voice Assistant is ready!");
+    setTimeout(startAssistant, 2000); // Delay ensures page loads first
+});
+
 // Ensure compatibility
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
